@@ -1,0 +1,74 @@
+It Stands for Windows Sub-System for Linux
+
+Redis is not currently avalable on windows
+
+First Install redis CLI from this Link
+https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/install-redis-on-windows/
+
+Microsoft Windows [Version 10.0.19045.4474]
+(c) Microsoft Corporation. All rights reserved.
+
+•wsl --install
+
+C:\Windows\system32>wsl --install
+Installing: Ubuntu
+Ubuntu has been installed.
+Launching Ubuntu...
+Installing, this may take a few minutes...
+Please create a default UNIX user account. The username does not need to match your Windows username.
+For more information visit: https://aka.ms/wslusers
+
+Enter new UNIX username: mohitbairwa25
+New password:mohitlinux25
+Retype new password:mohitlinux25
+passwd: password updated successfully
+Installation successful!
+
+•curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+
+•echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+
+•sudo apt-get update
+•sudo apt-get install redis
+
+•sudo service redis-server start
+
+•redis-cli
+•ping
+127.0.0.1:6379> ping
+PONG
+
+
+IF YOU RESTART YOUR COMPUTER THEN
+
+To get back to your WSL (Windows Subsystem for Linux) Ubuntu environment and start Redis after restarting your computer, follow these steps:
+
+### 1. Open WSL (Ubuntu)
+- Press **Windows key** and type "WSL" or "Ubuntu".
+- Click on the **Ubuntu** app to open your Linux terminal.
+
+### 2. Start Redis Server
+Once you're in the WSL terminal, you can start the Redis server by running:
+
+```bash
+sudo service redis-server start
+```
+
+### 3. Access Redis CLI
+After starting the Redis server, you can access the Redis CLI by running:
+
+```bash
+redis-cli
+```
+
+This will connect you to the local Redis instance running on your machine (`127.0.0.1:6379`).
+
+### 4. Connect to a Remote Redis Instance
+If you want to connect to a remote Redis instance, use the same command as before from the **Ubuntu shell**, not inside the Redis CLI:
+
+```bash
+redis-cli -u redis://default:mrlrNaemFhBAN3xMXA43MeIQ7tCscvUk@redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451
+```
+
+This will allow you to connect to your remote Redis server.
+By following these steps after a reboot, you'll be back to your Redis environment in no time.
