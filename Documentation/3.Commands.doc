@@ -1,0 +1,96 @@
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> SET name abhi
+OK
+
+Now Refesh (Change Tabs to refresh) redis GUI you can see your entry there
+
+If you store a string key from redis gui you can see in terminal
+
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> GET wow
+"this is amazing"
+(2.14s)
+
+To See All The Entery
+
+•redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> keys *
+
+Set Multiple Key Value Pairs
+
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> mset key1 "value1" key2 "value"
+OK
+
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> get key1
+"value1"
+
+SET:
+A general-purpose command that always sets the value for a given key, regardless of whether the key already exists.
+If the key already exists, it overwrites the existing value with the new one.
+This is the most common and straightforward way to set a key-value pair.
+
+SETNX (SET if Not Exists):
+Sets the key-value pair only if the key doesn't already exist.
+Returns 1 (integer) if the key is successfully set, and 0 (integer) if the key already has a value.
+Useful for scenarios where you want to ensure a key is set only once, preventing accidental overwrites.
+
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> SETNX new1 app1
+(integer) 1
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> get new1
+"app1"
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> set new1 web1
+OK
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> get new1
+"web1"
+(1.39s)
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> setnx new1 AI2.0
+(integer) 0
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> get new1
+"web1"
+
+Get Multiple keys
+
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> mget key1 name wow new1 key2
+1) "value1"
+2) "abhi"
+3) "this is amazing"
+4) "web1"
+5) "value"
+
+To Delete
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> DEL key1 key2
+(integer) 2
+
+To Know Exsistance of an Value
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> EXISTS wow
+(integer) 1
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> EXISTS wow2
+(integer) 0
+
+Time To Leave
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> TTL NEhow
+(integer) 971
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> ttl NEhow
+(integer) 958
+
+EXPIRE
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> EXPIRE NEhow 100
+(integer) 1
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> ttl NEhow
+(integer) 91
+
+SET Key value with time
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> SETEX sample 30 "TOP SECRET"
+OK
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> ttl sample
+(integer) 18
+
+Get Range
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> set great "this is awesome"
+OK
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> getrange great 0 5
+"this i"
+
+SetRange
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> setrange great 14 mindblowing
+(integer) 25
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> get great
+"this is awesommindblowing"
+redis-10451.c264.ap-south-1-

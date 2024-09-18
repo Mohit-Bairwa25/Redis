@@ -9,16 +9,11 @@ Now Paste this in terminal
 •redis-cli -u redis://default:mrlrNaemFhBAN3xMXA43MeIQ7tCscvUk@redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451
 redis-cli -u redis://default:mrlrNaemFhBAN3xMXA43MeIQ7tCscvUk@redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451
 
-redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> SET name abhi
-OK
+To Check Connection
+•ping
 
-Now Refesh redis GUI you can see your entry there
-
-If you store a string key from redis gui you can see in terminal
-
-redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> GET wow
-"this is amazing"
-(2.14s)
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> ping
+PONG
 
 redis cheat sheet Link
 https://redis.io/docs/latest/develop/data-types/strings/#:~:text=Redis%20strings%20store%20sequences%20of%20bytes%2C%20including%20text%2C,you%20implement%20counters%20and%20perform%20bitwise%20operations%2C%20too.
