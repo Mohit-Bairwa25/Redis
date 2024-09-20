@@ -1,0 +1,30 @@
+ZADD adds a new member and associated score to a sorted set. If the member already exists, the score is updated.
+ ZADD is similar to SADD, but takes one additional argument (placed before the element to be added)
+ redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> zadd lol 1 value2
+(integer) 1
+
+ZRANGE returns members of a sorted set, sorted within a given range.
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> zrange lol 0 -1
+1) "value2"
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> zadd lol 2 sampledata2
+(integer) 1
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> zadd lol 3 demodata3
+(integer) 1
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> zrange lol 0 - 1
+(error) ERR syntax error
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> zrange lol 0 -1 
+1) "value2"
+2) "sampledata2"
+3) "demodata3"
+
+ZRANK returns the rank of the provided member, assuming the sorted is in ascending order.
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> zrank lol demodata3
+(integer) 2
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> zrank lol value2
+(integer) 0
+
+ZREVRANK returns the rank of the provided member, assuming the sorted set is in descending order.
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> zrevrank lol demodata3
+(integer) 0
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> zrevrank lol value2
+(integer) 2

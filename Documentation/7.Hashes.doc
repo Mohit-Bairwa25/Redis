@@ -1,0 +1,22 @@
+HSET: sets the value of one or more fields on a hash.
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> HSET bike:1 model Deimos brand Ergonom type 'Enduro bikes' price 4972
+(integer) 4
+
+
+HGET: returns the value at a given field.
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> HGET bike:1 model
+"Deimos"
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> HGET bike:1 price
+"4972"
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> HGETALL bike:1
+1) "model"
+2) "Deimos"
+3) "brand"
+4) "Ergonom"
+5) "type"
+6) "Enduro bikes"
+7) "price"
+8) "4972"
+
+HMGET: returns the values at one or more given fields.
+HINCRBY: increments the value at a given field by the integer provided.

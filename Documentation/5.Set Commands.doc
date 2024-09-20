@@ -1,0 +1,26 @@
+SADD adds a new member to a set.
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> sadd yup 3
+(integer) 1
+
+SREM removes the specified member from the set.
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> srem yup 34
+(integer) 1
+
+SISMEMBER tests a string for set membership.
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> sismember yup 2
+(integer) 1
+
+SINTER returns the set of members that two or more sets have in common (i.e., the intersection).
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> sadd gojo infinitevoid
+(integer) 1
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> sadd gojo sukuna
+(integer) 1
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> sadd gojo 2
+(integer) 1
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> sinter gojo yup
+1) "2"
+
+
+SCARD returns the size (a.k.a. cardinality) of a set.
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> scard gojo
+(integer) 3

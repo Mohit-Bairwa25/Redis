@@ -1,0 +1,40 @@
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> lpush mytarr "1"
+(integer) 1
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> lpush mytarr "WOW"
+(integer) 2
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> rpush mytarr "naah"
+(integer) 3
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> rpush mytarr "o" "s"
+(integer) 5
+
+Return Length of List
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> llen mytarr
+(integer) 5
+
+To Know Items in List
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> lrange mytarr 0 -1
+1) "WOW"
+2) "1"
+3) "naah"
+4) "o"
+5) "s"
+
+To Remove
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> lpop mytarr
+"WOW"
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> lrange mytarr 0 -1
+1) "1"
+2) "naah"
+3) "o"
+4) "s"
+
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> rpop mytarr
+"s"
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> lrange mytarr 0 -1
+1) "1"
+2) "naah"
+3) "o"
+
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> blpop mytarr 40
+1) "mytarr"
+2) "1"
