@@ -2,12 +2,17 @@ HSET: sets the value of one or more fields on a hash.
 redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> HSET bike:1 model Deimos brand Ergonom type 'Enduro bikes' price 4972
 (integer) 4
 
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> HSET girls sophie "rejected"
+(integer) 1
+
 
 HGET: returns the value at a given field.
 redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> HGET bike:1 model
 "Deimos"
 redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> HGET bike:1 price
 "4972"
+
+HGETALL: returns the key value pair at a given field.
 redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> HGETALL bike:1
 1) "model"
 2) "Deimos"
@@ -18,5 +23,49 @@ redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> HGETALL bike:1
 7) "price"
 8) "4972"
 
+
 HMGET: returns the values at one or more given fields.
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> hmget bike:1 model brand type price
+1) "Deimos"
+2) "Ergonom"
+3) "Enduro bikes"
+4) "4972"
+
 HINCRBY: increments the value at a given field by the integer provided.
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> hincrby bike:1 price 28
+(integer) 5000
+
+Use the following commands to set either an exact expiration time or a TTL value for specific fields:
+
+HEXPIRE: set the remaining TTL in seconds.
+HPEXPIRE: set the remaining TTL in milliseconds.
+HEXPIREAT: set the expiration time to a timestamp1 specified in seconds.
+HPEXPIREAT: set the expiration time to a timestamp specified in milliseconds.
+Use the following commands to retrieve either the exact time when or the remaining TTL until specific fields will expire:
+
+HEXPIRETIME: get the expiration time as a timestamp in seconds.
+HPEXPIRETIME: get the expiration time as a timestamp in milliseconds.
+HTTL: get the remaining TTL in seconds.
+HPTTL: get the remaining TTL in milliseconds.
+Use the following command to remove the expiration of specific fields:
+
+HPERSIST: remove the expiration.
+
+Most Redis hash commands are O(1).
+A few commands, such as HKEYS, HVALS, HGETALL, and most of the expiration-related commands, are O(n), where n is the number of field-value pairs.
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> hkeys bike:1
+1) "model"
+2) "brand"
+3) "type"
+4) "price"
+
+HDEL: To Delete a Key Value Pair
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> hdel bike:1 price
+(integer) 1
+redis-10451.c264.ap-south-1-1.ec2.redns.redis-cloud.com:10451> hgetall bike:1
+1) "model"
+2) "Deimos"
+3) "brand"
+4) "Ergonom"
+5) "type"
+6) "Enduro bikes"

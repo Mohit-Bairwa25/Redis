@@ -1,0 +1,5 @@
+PS D:\HDD Data\A Disk\CODE\Visual Studio Code\GitHub\Redis\server> npm init -y
+•npm i express
+•npm i nodemon
+•npm i ioredis
+•npm start
